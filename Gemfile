@@ -32,3 +32,8 @@ group :development do
   # gem "rack-mini-profiler"
   # gem "spring"
 end
+
+gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-google-oauth2'
+gem 'cancancan'
