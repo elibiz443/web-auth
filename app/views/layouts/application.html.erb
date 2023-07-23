@@ -22,10 +22,14 @@
   <body class="max-w-full overflow-x-hidden font-['ubuntu'] bg-gradient-to-r from-gray-900 to-gray-500">
     <% if current_user %>
       <%= render "shared/header" %>
-      <%= yield %>
+      <main>
+        <%= yield %>
+      </main>
       <%= render "shared/footer" %>
     <% else %>
-      <%= yield %>
+      <main class="p-6">
+        <%= yield %>
+      </main>
     <% end %>
   </body>
 </html>
