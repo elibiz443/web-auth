@@ -19,22 +19,25 @@ class SessionsController < ApplicationController
   def create_auth_user
     auth = request.env["omniauth.auth"]
     begin
-      if (User.find_by_provider_and_uid(auth["provider"], auth["uid"]))
-        @auth_user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
-      else
-        @auth_user = User.new
-        @auth_user.provider = auth["provider"]
-        @auth_user.uid = auth["uid"]
-        @auth_user.username = auth["info"]["username"]
-        @auth_user.email = auth["info"]["email"]
-        @auth_user.phone_number = auth["info"]["phone_number"]
-        @auth_user.full_name = auth["info"]["full_name"]
-        @auth_user.image = auth["info"]["image"]
-        @auth_user.password_digest = "#{Time.now.strftime('%d/%m/%Y-%H:%M:%S')}-#{rand.to_s[2..10]}"
-        @auth_user.save!
+      @auth_user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
+      
+      unless @auth_user
+        @auth_user = User.new(
+          provider: auth["provider"],
+          uid: auth["uid"],
+          email: auth["info"]["email"],
+          first_name: auth["info"]["first_name"],
+          last_name: auth["info"]["last_name"],
+          image: auth["info"]["image"],
+          password_digest: "#{Time.now.strftime('%d/%m/%Y-%H:%M:%S')}-#{rand.to_s[2..10]}",
+          google_signup: true 
+        )
+        
+        @auth_user.save(validate: false) 
       end
+
       session[:user_id] = @auth_user.id
-      redirect_to '/', notice: "Logged in as #{@auth_user.full_name} 👍"
+      redirect_to '/', notice: "Logged in as #{auth_user.first_name} #{auth_user.last_name} 👍"
     rescue StandardError
       flash[:alert] = @auth_user.errors.full_messages.join(', ')
       redirect_to '/login'

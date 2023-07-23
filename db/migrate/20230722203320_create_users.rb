@@ -4,8 +4,9 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :username
       t.string :email
       t.string :phone_number
+      t.string :first_name
+      t.string :last_name
       t.string :image, default: 'https://cdn-icons-png.flaticon.com/128/3171/3171065.png'
-      t.string :full_name
       t.string :role, default: 'customer'
       t.string :provider, default: 'system'
       t.string :uid, default: 'system'

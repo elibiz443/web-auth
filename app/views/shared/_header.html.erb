@@ -1,0 +1,59 @@
+<!-- ========== HEADER ========== -->
+<header class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full text-sm py-2.5 sm:py-4 bg-gradient-to-r from-[#2E5EEB]/[.2] to-[#971dac]/[.3] border-b border-bottom border-gray-500">
+  <nav class="flex basis-full items-center w-full mx-auto px-4 sm:px-6 md:px-8" aria-label="Global">
+    <div class="mr-5 lg:ml-12 lg:mr-12">
+      <a class="flex-none text-xl font-semibold text-gray-100 hover:text-gray-300" href="/" aria-label="WebAuth">
+        WebAuth
+      </a>
+    </div>
+
+    <div class="w-full flex items-center justify-end ml-auto sm:justify-between sm:gap-x-3 sm:order-3">
+      <div class="mr-4 md:mr-0">
+        <label for="icon" class="sr-only">Search</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none z-20 pl-4">
+            <svg class="h-4 w-4 text-gray-100" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+          </div>
+          <input type="text" id="icon" name="icon" class="py-2 px-4 pl-11 block w-full shadow-sm rounded-md text-sm text-gray-100 focus:z-10 focus:bg-[#2E5EEB]/[.75] outline-0 placeholder:text-gray-100 bg-[#2E5EEB]/[.5]" placeholder="Search">
+        </div>
+      </div>
+
+      <div class="flex flex-row items-center justify-end gap-3 md:gap-5">
+        <button type="button" class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2rem] w-[2rem] rounded-full font-medium bg-gray-200 text-gray-900 align-middle focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-700 transition-all text-xs ring-[0.3rem] ring-[#971dac]/[.2] hover:ring-transparent hover:bg-white">
+          <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+          </svg>
+        </button>
+
+        <div class="hs-dropdown relative inline-flex" data-hs-dropdown-placement="bottom-right">
+          <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-[2.375rem] w-[2.375rem] rounded-full font-medium align-middle focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-gray-700 transition-all text-xs">
+            <%= image_tag current_user.image, class: "inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-[0.3rem] ring-[#971dac]/[.2] hover:ring-transparent opacity-85 hover:opacity-100" %>
+          </button>
+
+          <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] z-50 bg-[#121730] shadow-2xl shadow-gray-600 rounded-lg p-2 border border-gray-500" aria-labelledby="hs-dropdown-with-header">
+            <div class="py-3 px-5 -m-2 bg-gradient-to-r from-[#2E5EEB]/[.4] to-[#070c35] rounded-t-lg">
+              <p class="text-sm text-gray-400">Signed in as</p>
+              <p class="text-sm font-medium text-gray-200">
+                <%= current_user.first_name %>
+                <%= current_user.last_name %>
+              </p>
+            </div>
+            <div class="mt-2 py-2 first:pt-0 last:pb-0">
+              <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-gray-100 hover:bg-gradient-to-r from-[#2E5EEB]/[.2] to-[#971dac]/[.3]" href="#">
+                <i class="fa-regular fa-user"></i>
+                Profile
+              </a>
+              <button class="flex items-center gap-x-3.5 py-2 px-3 w-full rounded-md text-sm text-gray-100 hover:bg-gradient-to-r from-[#2E5EEB]/[.2] to-[#971dac]/[.3]" onclick="location.href='/logout'">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- ========== END HEADER ========== -->
