@@ -1,7 +1,12 @@
 <!-- Hero -->
 <div class="bg-slate-900">
   <div class="bg-gradient-to-b from-violet-600/[.15] via-transparent">
-    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
+    <div class="max-w-[35rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
+      <div class="my-3 text-center">
+        <% flash.each do |type, msg| %>
+          <%= content_tag :div, msg, class: build_alert_classes(type) %>
+        <% end %>
+      </div>
       <!-- Announcement Banner -->
       <div class="flex justify-center">
         <a class="group inline-block bg-white/[.05] hover:bg-white/[.1] border border-white/[.05] p-1 pl-4 rounded-full shadow-md" href="https://github.com/elibiz443/web-auth" target="_blank">
