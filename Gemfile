@@ -38,3 +38,4 @@ gem "omniauth-rails_csrf_protection"
 gem 'omniauth-google-oauth2'
 gem 'cancancan'
 gem 'dynamic_footer'
+gem 'inline_svg'
