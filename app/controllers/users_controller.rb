@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      flash[:notice] = "Welcome #{current_user.full_name} 👍"
+      flash[:notice] = "Welcome #{current_user.first_name} #{current_user.last_name} 👍"
       redirect_to '/'
     else
       if (@user.errors.full_messages).uniq! == nil

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: session_params[:username])
     if @user && @user.authenticate(session_params[:password])
       log_in(@user)
-      flash[:notice] = "Welcome Back #{current_user.full_name} 👍"
+      flash[:notice] = "Welcome Back #{current_user.first_name} #{current_user.last_name} 👍"
       redirect_to '/'
     else
       flash[:alert] = 'Invalid email/password combination ❌'
